@@ -1,0 +1,231 @@
+=========================
+ Installing Astral 1.0
+=========================
+
+:Last update:   $Date: 2009/02/16 17:44:26 $
+:Revision:      $Revision: 1.00 $
+
+.. contents:: Contents
+.. section-numbering::
+
+This document contains instructions for installing Astral ...
+
+For information on the capabilities and features of Astral, see the file
+README in the top-level directory of the Astral distribution.
+
+
+Obtaining Astral
+==================
+
+Astral can be obtained from the Horde website and FTP server, at
+
+   http://www.horde.org/astral/
+
+   ftp://ftp.horde.org/pub/astral/
+
+Or use the mirror closest to you:
+
+   http://www.horde.org/mirrors.php
+
+Bleeding-edge development versions of Astral are available via CVS; see the
+file `horde/docs/HACKING`_ in the Horde distribution, or the website
+http://www.horde.org/source/, for information on accessing the Horde CVS
+repository.
+
+
+Prerequisites
+=============
+
+To function properly, Astral **requires** the following:
+
+1. A working Horde installation.
+
+   Astral runs within the `Horde Application Framework`_, a set of common
+   tools for Web applications written in PHP. You must install Horde before
+   installing Astral.
+
+   .. Important:: Astral 1.0 requires version 3.0+ of the Horde Framework -
+                  earlier versions of Horde will **not** work.
+
+   .. _`Horde Application Framework`: http://www.horde.org/horde/
+
+   The Horde Framework can be obtained from the Horde website and FTP server,
+   at
+
+      http://www.horde.org/horde/
+
+      ftp://ftp.horde.org/pub/horde/
+
+   Many of Astral's prerequisites are also Horde prerequisites.
+
+   .. Important:: Be sure to have completed all of the steps in the
+                  `horde/docs/INSTALL`_ file for the Horde Framework before
+                  installing Astral.
+
+2. The following PHP capabilities:
+
+3. The following PEAR packages:
+   (See `horde/docs/INSTALL`_ for instructions on installing PEAR packages)
+
+4. The following PECL modules:
+   (See `horde/docs/INSTALL`_ for instructions on installing PECL modules)
+
+5. Something else.
+
+Astral needs to have access to the Asterisk Manager interface, which it
+connects to using TCP. You will need to add a file something like this to
+/etc/asterisk/manager.d/ (or whereever that directory is on your
+distro):
+
+[horde]
+secret=secretpassword
+read=call
+write=call
+
+If Horde and Asterisk are not running on the same host, adjust
+/etc/asterisk/manager.conf accordingly. By default, Asterisk Manager listens
+only on localhost.
+
+
+Installing Astral
+=================
+
+Astral is written in PHP, and must be installed in a web-accessible
+directory. The precise location of this directory will differ from system to
+system. Conventionally, Astral is installed directly underneath Horde in the
+web server's document tree.
+
+Since Astral is written in PHP, there is no compilation necessary; simply
+expand the distribution where you want it to reside and rename the root
+directory of the distribution to whatever you wish to appear in the URL. For
+example, with the Apache web server's default document root of
+``/usr/local/apache/htdocs``, you would type::
+
+   cd /usr/local/apache/htdocs/horde
+   tar zxvf /path/to/astral-h3-x.y.z.tar.gz
+   mv astral-h3-x.y.z astral
+
+If using LDAP for storing preferences, you will need to patch the
+horde.schema used by your LDAP server. A patch is included in the distribution
+in scripts/ldap.
+
+
+Configuring Astral
+====================
+
+1. Configuring Horde for Astral
+
+   a. Register the application
+
+      In ``horde/config/registry.d/astral.php``, find the ``applications['astral']``
+      stanza. The default settings here should be okay, but you can change
+      them if desired. If you have changed the location of Astral relative
+      to Horde, either in the URL, in the filesystem or both, you must update
+      the ``fileroot`` and ``webroot`` settings to their correct values.
+
+2. Creating the database tables
+
+   The specific steps to create Astrals's database tables depend on which
+   database you've chosen to use.
+
+   Astral uses a database only for preference storage. For SQL preference
+   storage your existing Horde database should suffice.
+
+   If using LDAP for storing preferences, you will need to patch the
+   horde.schema used by your LDAP server. A patch is included in the distribution
+   in scripts/ldap/.
+
+3. Configuring Astral
+
+   To configure Astral, change to the ``config/`` directory of the installed
+   distribution, and make copies of all of the configuration ``dist`` files
+   without the ``dist`` suffix::
+
+      cd config/
+      for foo in *.dist; do cp $foo `basename $foo .dist`; done
+
+   Or on Windows::
+
+      copy *.dist *.
+
+   Documentation on the format and purpose of those files can be found in each
+   file. You may edit these files if you wish to customize Astral's
+   appearance and behavior.
+
+   You must login to Horde as a Horde Administrator to finish the
+   configuration of Astral. Use the Horde ``Administration`` menu item to
+   get to the administration page, and then click on the ``Configuration``
+   icon to get the configuration page. Select ``Asterisk Dialer`` from the
+   selection list of applications. Fill in or change any configuration values
+   as needed. When done click on ``Generate Asterisk Dialer Configuration`` to
+   generate the ``conf.php`` file. If your web server doesn't have write
+   permissions to the Astral configuration directory or file, it will not be
+   able to write the file. In this case, go back to ``Configuration`` and
+   choose one of the other methods to create the configuration file
+   ``astral/config/conf.php``.
+
+   Note for international users: Astral uses GNU gettext to provide local
+   translations of text displayed by applications; the translations are found
+   in the ``po/`` directory. If a translation is not yet available for your
+   locale (and you wish to create one), see the ``horde/po/README`` file, or
+   if you're having trouble using a provided translation, please see the
+   `horde/docs/TRANSLATIONS`_ file for instructions.
+
+4. User configuration.
+
+   Before a user can use Astral to place phone calls, they must configure
+   the device which will be used as the source of their phone calls. This
+   is done from the Options for Asterisk Dialer. Valid entries are any
+   Asterisk channel, for example:
+
+     SIP/myphone
+     IAX2/myphone
+     ZAP/5
+
+5. Securing
+
+   Astral communicates with the Asterisk Manager using TCP. All passwords are
+   sent in clear text. If your Asterisk installation is not on the same
+   machine as your Horde installation (likely on all but small scale setups)
+   you should consider carefully the security implications of this. You may
+   wish to use an SSH tunnel or other means to secure the communications
+   channel.
+
+Known Problems
+==============
+
+
+
+
+Obtaining Support
+=================
+
+If you encounter problems with Astral, help is available!
+
+The Horde Frequently Asked Questions List (FAQ), available on the Web at
+
+  http://www.horde.org/faq/
+
+The Horde Project runs a number of mailing lists, for individual applications
+and for issues relating to the project as a whole. Information, archives, and
+subscription information can be found at
+
+  http://www.horde.org/mail/
+
+Lastly, Horde developers, contributors and users may also be found on IRC,
+on the channel #horde on the Freenode Network (irc.freenode.net).
+
+Please keep in mind that Astral is free software written by volunteers.
+For information on reasonable support expectations, please read
+
+  http://www.horde.org/support.php
+
+Thanks for using Astral!
+
+The Astral team
+
+
+.. _README: ?f=README.html
+.. _`horde/docs/HACKING`: ../../horde/docs/?f=HACKING.html
+.. _`horde/docs/INSTALL`: ../../horde/docs/?f=INSTALL.html
+.. _`horde/docs/TRANSLATIONS`: ../../horde/docs/?f=TRANSLATIONS.html

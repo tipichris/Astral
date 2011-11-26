@@ -1,0 +1,24 @@
+--- horde/scripts/ldap/horde.schema.orig    2009-02-08 00:26:52.000000000 +0000
++++ horde/scripts/ldap/horde.schema     2009-02-08 00:30:34.000000000 +0000
+@@ -411,6 +411,12 @@
+         EQUALITY caseIgnoreIA5Match
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{1024} )
+
++attributetype ( 1.3.6.1.4.1.13040.39.1.1
++       NAME 'astralPrefs'
++       DESC 'Astral Preferences'
++       EQUALITY caseIgnoreIA5Match
++       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{1024} )
++
+ #
+ # Horde objectclass branch 1.3.6.1.4.1.13040.2.2.*
+ #
+@@ -430,7 +436,7 @@
+         mimpPrefs $ mottlePrefs $ nicPrefs $
+         occamPrefs $ odinPrefs $ rakimPrefs $
+         seshaPrefs $ swooshPrefs $ thorPrefs $
+-        ulaformPrefs
++        ulaformPrefs $ astralPrefs
+     ) )
+
+ objectclass ( 1.3.6.1.4.1.13040.2.2.2

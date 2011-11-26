@@ -1,0 +1,75 @@
+What is Astral?
+=================
+
+:Last update:   $Date: 2009/02/16 04:51:53 $
+:Revision:      $Revision: 1.0 $
+
+.. contents:: Contents
+.. section-numbering::
+
+Astral is a module for the Horde framework that provides a dialer for
+the the Asterisk PBX. It provides the telephony/dial service, allowing
+dialling of phone numbers by simply clicking on a link displayed in
+Turba.
+
+
+
+Obtaining Astral
+------------------
+
+Further information on Astral and the latest version can be obtained at
+
+  http://www.oak-wood.co.uk/oss/astral/
+
+Documentation
+-------------
+
+The following documentation is available in the Astral distribution:
+
+:README:            This file
+:COPYING_:           Copyright and license information
+:LICENSE_:           Copyright and license information
+:docs/CHANGES:    Changes by release
+:docs/CREDITS:    Project developers
+:docs/INSTALL:    Installation instructions and notes
+
+
+Installation
+------------
+
+Instructions for installing Astral can be found in the file INSTALL in the
+``docs/`` directory of the Astral distribution.
+
+
+Assistance
+----------
+
+If you encounter problems with Astral, help is available!
+
+The Horde Frequently Asked Questions List (FAQ), available on the Web at
+
+  http://www.horde.org/faq/
+
+The Horde Project runs a number of mailing lists, for individual applications
+and for issues relating to the project as a whole. Information, archives, and
+subscription information can be found at
+
+  http://www.horde.org/mail/
+
+Lastly, Horde developers, contributors and users also make occasional
+appearances on IRC, on the channel #horde on the freenode Network
+(irc.freenode.net).
+
+
+Licensing
+---------
+
+For licensing and copyright information, please see the file COPYING
+in the Astral distribution.
+
+Thanks,
+
+The Astral team
+
+
+

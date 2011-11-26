@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- $Horde: astral/config/conf.xml,v 1.0 2009/02/16 18:17:25 jan Exp $ -->
+<configuration>
+ <configsection name="asteriskmanager">
+  <configheader>Remote Asterisk manager</configheader>
+      <configstring name="host" desc="Address of remote Asterisk manager (optionally with :port)">127.0.0.1</configstring>
+      <configstring name="username" desc="Username to login as" />
+      <configstring name="secret" desc="Password" />
+      <configstring name="context" desc="Context to use">internal</configstring>
+      <configstring name="priority" desc="Initial priority of calls">1</configstring>
+	  <configstring name="intlprefix" desc="International prefix to replace '+' with">00</configstring>
+ </configsection>
+
+ <configsection name="menu">
+  <configheader>Menu Settings</configheader>
+  <configmultienum name="apps" desc="Select any applications that should be
+  linked in Astral's menu">
+   <values>
+    <configspecial name="list-horde-apps" />
+   </values>
+  </configmultienum>
+ </configsection>
+</configuration>
