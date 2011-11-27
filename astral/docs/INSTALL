@@ -8,7 +8,7 @@
 .. contents:: Contents
 .. section-numbering::
 
-This document contains instructions for installing Astral ...
+This document contains instructions for installing Astral
 
 For information on the capabilities and features of Astral, see the file
 README in the top-level directory of the Astral distribution.
@@ -17,20 +17,14 @@ README in the top-level directory of the Astral distribution.
 Obtaining Astral
 ==================
 
-Astral can be obtained from the Horde website and FTP server, at
+Astral can be obtained from:
 
-   http://www.horde.org/astral/
+   http://www.oak-wood.co.uk/oss/astral/
 
-   ftp://ftp.horde.org/pub/astral/
 
-Or use the mirror closest to you:
+Bleeding-edge development versions of Astral are available via Git:
 
-   http://www.horde.org/mirrors.php
-
-Bleeding-edge development versions of Astral are available via CVS; see the
-file `horde/docs/HACKING`_ in the Horde distribution, or the website
-http://www.horde.org/source/, for information on accessing the Horde CVS
-repository.
+  https://github.com/tipichris/Astral/
 
 
 Prerequisites
@@ -40,14 +34,14 @@ To function properly, Astral **requires** the following:
 
 1. A working Horde installation.
 
-   Astral runs within the `Horde Application Framework`_, a set of common
+   Astral runs within the `Horde Application Framework`, a set of common
    tools for Web applications written in PHP. You must install Horde before
    installing Astral.
 
    .. Important:: Astral 1.0 requires version 3.0+ of the Horde Framework -
                   earlier versions of Horde will **not** work.
 
-   .. _`Horde Application Framework`: http://www.horde.org/horde/
+   .. `Horde Application Framework`: http://www.horde.org/horde/
 
    The Horde Framework can be obtained from the Horde website and FTP server,
    at
@@ -70,7 +64,7 @@ To function properly, Astral **requires** the following:
 4. The following PECL modules:
    (See `horde/docs/INSTALL`_ for instructions on installing PECL modules)
 
-5. Something else.
+5. Asterisk
 
 Astral needs to have access to the Asterisk Manager interface, which it
 connects to using TCP. You will need to add a file something like this to
@@ -193,8 +187,9 @@ Configuring Astral
 
 Known Problems
 ==============
-
-
+Astral can not cope with address book entries that include extension numbers
+eg
+  01234 567890 ext 123
 
 
 Obtaining Support
@@ -224,8 +219,3 @@ Thanks for using Astral!
 
 The Astral team
 
-
-.. _README: ?f=README.html
-.. _`horde/docs/HACKING`: ../../horde/docs/?f=HACKING.html
-.. _`horde/docs/INSTALL`: ../../horde/docs/?f=INSTALL.html
-.. _`horde/docs/TRANSLATIONS`: ../../horde/docs/?f=TRANSLATIONS.html

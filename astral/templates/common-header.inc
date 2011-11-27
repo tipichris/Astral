@@ -5,9 +5,9 @@ if (isset($language)) {
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
-<!-- Astdial: Copyright 2004-2009 The Horde Project.  Astdial is under a Horde license. -->
-<!--     Horde Project: http://www.horde.org/ | Astdial: http://www.horde.org/horde/     -->
-<!--                 Horde Licenses: http://www.horde.org/licenses/                       -->
+<!-- Astral: Copyright 2004-2009 The Horde Project.  Astral is under the GPL license. -->
+<!--     Horde Project: http://www.horde.org/ | Astral: http://www.oak-wood.co.uk/oss/astral     -->
+
 <?php echo !empty($language) ? '<html lang="' . strtr($language, '_', '-') . '">' : '<html>' ?>
 <head>
 <?php

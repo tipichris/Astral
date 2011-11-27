@@ -11,6 +11,7 @@
  * did not receive this file, see http://www.fsf.org/copyleft/gpl.html.
  *
  * @package Astral
+ * @author Chris Hastie <chris@raggedstaff.net>
  */
 
 $_services['dial'] = array(
