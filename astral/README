@@ -27,8 +27,8 @@ Documentation
 The following documentation is available in the Astral distribution:
 
 :README:            This file
-:COPYING_:           Copyright and license information
-:LICENSE_:           Copyright and license information
+:COPYING:           Copyright and license information
+
 :docs/CHANGES:    Changes by release
 :docs/CREDITS:    Project developers
 :docs/INSTALL:    Installation instructions and notes
